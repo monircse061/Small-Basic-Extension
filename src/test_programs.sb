@@ -1,0 +1,19 @@
+begin:
+TextWindow.Write("Enter a number: ")
+num = TextWindow.ReadNumber()
+remainder = Math.Remainder(num, 2)
+If (remainder = 0) Then
+    TextWindow.WriteLine("The number is even.") 
+Else TextWindow.WriteLine("The number is odd.") 
+EndIf
+
+---------------------------------
+TextWindow.Write("Enter temperature in Fahrenheit: ")
+fahr = TextWindow.ReadNumber()
+-----------------------------------------------
+number = 100 
+While (number > 1)   
+	TextWindow.WriteLine(number) 
+  	number = number / 2 
+EndWhile
+
