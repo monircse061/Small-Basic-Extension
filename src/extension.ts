@@ -349,7 +349,7 @@ export function activate(context: vscode.ExtensionContext) {
                   responseText = normalizedResponseText.replace(normalizedlinePrefix, '');
                   console.log("Response After Removing Line Matching Prefix:",responseText);
                 }
-                responseText = responseText.replace(/\(/g, " ( ").replace(/\)/g, " ) ").replace(/=/g, " = ").replace(/</g, " < ").replace(/>/g, " > ").trim();
+                responseText = responseText.replace(/=/g, " = ").replace(/</g, " < ").replace(/>/g, " > ").trim();
                 let trimmedKey = key.trim();
                 if (trimmedKey.length > 18) {
                     trimmedKey = trimmedKey.substring(0, 10) + "..";
