@@ -404,22 +404,25 @@ export function activate(context: vscode.ExtensionContext) {
               // Remove Completion item from response text
               let extractedText = '';
               if (typeof item.label === 'string') {
-                // Split and extract text based on '|'
-                const labelParts = item.label.split('|').map(part => part.trim());
-                if (labelParts.length > 1) {
-                    extractedText = labelParts[1]; // Text after '|'
-                    // Ensure the left part of the label is not included
-                    const leftPart = labelParts[0].replace(/\s+/g, ''); // Normalize by removing spaces
-                    const normalizedExtracted = extractedText.replace(/\s+/g, ''); // Normalize the extracted text
-                    if (normalizedExtracted.includes(leftPart)) {
-                        extractedText = extractedText
-                            .replace(new RegExp(leftPart.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), '')
-                            .trim();
-                    }
-                }
-              } else if (typeof item.label === 'object') {
-                //console.error("CompletionItemLabel structure detected; please adjust extraction logic.");
+                extractedText = item.label;
               }
+              // if (typeof item.label === 'string') {
+              //   // Split and extract text based on '|'
+              //   const labelParts = item.label.split('|').map(part => part.trim());
+              //   if (labelParts.length > 1) {
+              //       extractedText = labelParts[1]; // Text after '|'
+              //       // Ensure the left part of the label is not included
+              //       const leftPart = labelParts[0].replace(/\s+/g, ''); // Normalize by removing spaces
+              //       const normalizedExtracted = extractedText.replace(/\s+/g, ''); // Normalize the extracted text
+              //       if (normalizedExtracted.includes(leftPart)) {
+              //           extractedText = extractedText
+              //               .replace(new RegExp(leftPart.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&'), 'g'), '')
+              //               .trim();
+              //       }
+              //   }
+              // } else if (typeof item.label === 'object') {
+              //   //console.error("CompletionItemLabel structure detected; please adjust extraction logic.");
+              // }
               //console.log("Extracted Text: ", extractedText);
               const lastIndex = linePrefix.length - 1;
               let insertText: string | null;
